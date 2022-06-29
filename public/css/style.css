@@ -1,0 +1,35 @@
+* {
+    background-color: teal;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    color: rgb(236, 230, 219);
+}
+
+body,
+#main,
+.picture-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-board {
+    display: flex;
+    flex-direction: row;
+}
+
+.picture-container {
+    border: 12px solid wheat;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px;
+}
+
+img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+}
