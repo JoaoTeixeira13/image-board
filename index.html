@@ -11,6 +11,14 @@
 
     <!-- This container is for our Vue instance -->
     <div id="main">
+        <form method="post" action="/upload" enctype="multipart/form-data" @submit="handleSubmit">
+            <input name="title" placeholder="Title"/>
+            <input name="user" placeholder="User"/>
+            <input name="description" placeholder="Description"/>
+            <input name="image" type="file" accept="image/*"/>
+            <button>Submit</button> 
+
+        </form>
 
         <h2>Latest Images </h2>
 

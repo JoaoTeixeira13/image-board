@@ -25,5 +25,16 @@ Vue.createApp({
 
     methods: {
         //this is where we define all of our functions
+        handleSubmit(e) {
+            e.preventDefault();
+            console.log("Handle Submit");
+
+            fetch("/upload", {
+                method: "POST",
+                body: new FormData(e.target),
+            })
+                .then((res) => res.json())
+                .then((data) => this.images.unshift(data.payload));
+        },
     },
 }).mount("#main");
