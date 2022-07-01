@@ -8,7 +8,7 @@ Vue.createApp({
         return {
             name: "Images",
             images: [],
-            imageSelected: null,
+            imageSelected: "",
         };
     }, //data ends here
 
@@ -44,6 +44,9 @@ Vue.createApp({
         selectImage(id) {
             console.log("Image id clicked on is,", id);
             this.imageSelected = id;
+        },
+        closeModal() {
+            this.imageSelected = null;
         },
     },
 }).mount("#main");

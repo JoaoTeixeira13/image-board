@@ -4,6 +4,7 @@ const modal = {
             heading: "modal component",
             count: 1,
             greetee: "",
+            image: {},
         };
     },
     props: ["selectedImage"],
@@ -17,6 +18,7 @@ const modal = {
             .then((data) => {
                 this.image = data;
                 console.log("current data is", data);
+                console.log(this.image, "this image object");
             })
             .catch((err) => {
                 console.log("error is ", err);
@@ -27,13 +29,20 @@ const modal = {
             console.log("user wants to count");
             this.count++;
         },
+        close(){
+            console.log("this is being clicked");
+            this.$emit("close")
+            
+        }
     },
     template: ` <div>
-                    <h2> I am your {{heading}}</h2>
-                    <h2>Hello {{greetee}}</h2>
-                    <h3> count is: {{count}}</h3>
-                    <button @click="increaseCount"> increase count </button>
-                    <button @click="count--">decrease count </button>
+    <span @click="close">X</span>
+                    <img v-bind:src="image.url" v-bind:alt="image.description"/>
+                    <h2>{{image.title}}</h2>
+                    <h3>{{image.description}}</h3>
+                    <p>Uploaded by {{image.username}} on {{image.created_at}}</p>
+                     <button @click="increaseCount"> increase count </button>
+                     <button @click="count--">decrease count </button>
                </div>`,
 };
 
