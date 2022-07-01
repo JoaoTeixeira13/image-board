@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>My Imageboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
     <h1>My Imageboard</h1>
@@ -11,7 +15,8 @@
 
     <!-- This container is for our Vue instance -->
     <div id="main">
-        <form method="post" action="/upload" enctype="multipart/form-data" @submit="handleSubmit">
+        <modal v-if="imageSelected" :selected-image="imageSelected"></modal>
+        <form method="post" action="/upload" enctype="multipart/form-data" @submit="handleSubmit" class="input-form">
             <input name="title" placeholder="Title"/>
             <input name="user" placeholder="User"/>
             <input name="description" placeholder="Description"/>
@@ -25,7 +30,7 @@
         <div v-if="images.length" class="image-board">
             <div v-for="image in images" :key="image.id" class="picture-container">
                 
-                <img :src="image.url" :alt="image.description">
+                <img :src="image.url" :alt="image.description" @click="selectImage(image.id)">
                 <p>{{image.title}}</p>
             </div> 
 

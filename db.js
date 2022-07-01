@@ -18,6 +18,9 @@ module.exports.getImages = () => {
     return db.query(`SELECT * FROM images
     ORDER BY id DESC`);
 };
+module.exports.getSpecificImage = (id) => {
+    return db.query(`SELECT * FROM images WHERE id = $1`, [id]);
+};
 
 module.exports.uploadImage = (url, username, title, description) => {
     const q = `INSERT INTO images(url, username, title, description)

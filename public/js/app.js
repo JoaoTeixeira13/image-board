@@ -1,12 +1,14 @@
 // this file will contain all of our Vue code!
 
 import * as Vue from "./vue.js";
+import modal from "./modal.js";
 
 Vue.createApp({
     data() {
         return {
             name: "Images",
             images: [],
+            imageSelected: null,
         };
     }, //data ends here
 
@@ -22,6 +24,9 @@ Vue.createApp({
                 this.images = data;
             });
     },
+    components: {
+        modal: modal,
+    },
 
     methods: {
         //this is where we define all of our functions
@@ -35,6 +40,10 @@ Vue.createApp({
             })
                 .then((res) => res.json())
                 .then((data) => this.images.unshift(data.payload));
+        },
+        selectImage(id) {
+            console.log("Image id clicked on is,", id);
+            this.imageSelected = id;
         },
     },
 }).mount("#main");

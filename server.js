@@ -26,6 +26,15 @@ app.get("/images", (req, res) => {
         });
 });
 
+app.get("/getImages/:image", (req, res) => {
+    console.log("required parameters are", req.params);
+    console.log("current image id is ", req.params.image);
+    db.getSpecificImage(req.params.image).then((result) => {
+        console.log("is this what I am after?", result.rows[0]);
+        res.json(result.rows[0]);
+    });
+});
+
 const storage = multer.diskStorage({
     destination(req, file, callback) {
         callback(null, "uploads");

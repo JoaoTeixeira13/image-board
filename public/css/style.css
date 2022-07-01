@@ -1,5 +1,5 @@
 * {
-    background-color: teal;
+    background-color: #2e0249;
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -7,7 +7,9 @@ body {
     color: rgb(236, 230, 219);
 }
 h1 {
-    font-size: 3.5rem;
+    font-size: 6rem;
+    margin-top: 120px;
+    font-family: "Orbitron", sans-serif;
 }
 h2 {
     font-size: 2.2rem;
@@ -15,18 +17,42 @@ h2 {
 p {
     font-size: 1.2rem;
 }
+button {
+    width: 200px;
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #2e0249;
+    background-color: #ffd483;
+    cursor: pointer;
+}
 
 body,
 #main,
-.picture-container {
+.picture-container,
+.image-board {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.input-form input {
+    width: 200px;
+    height: 50px;
+    border-radius: 2px;
+    margin: 10px;
+    font-size: 18px;
+    background-color: #dabdbd;
+}
+input::placeholder {
+    color: #1638c0;
+}
 
 .image-board {
-    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
