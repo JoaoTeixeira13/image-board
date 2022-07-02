@@ -1,10 +1,21 @@
-* {
-    background-color: #2e0249;
+body {
+    background: linear-gradient(290deg, #2e0249, #331834, #141233, #1c0241);
+    background-size: 300% 300%;
+    animation: universe 5s ease infinite;
+    color: #ece6db;
     font-family: Helvetica, Arial, sans-serif;
 }
 
-body {
-    color: rgb(236, 230, 219);
+@keyframes universe {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 h1 {
     font-size: 6rem;
@@ -31,6 +42,15 @@ button {
     cursor: pointer;
 }
 
+img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+}
+footer {
+    padding: 40px;
+}
+
 body,
 #main,
 .picture-container,
@@ -45,11 +65,12 @@ body,
     height: 50px;
     border-radius: 2px;
     margin: 10px;
-    font-size: 18px;
+    padding-left: 5px;
+    font-size: 22px;
     background-color: #dabdbd;
 }
 input::placeholder {
-    color: #1638c0;
+    color: #680858e7;
 }
 
 .image-board {
@@ -57,6 +78,7 @@ input::placeholder {
     flex-direction: row;
 }
 
+/* .modal-box img, */
 .picture-container {
     border: 12px solid wheat;
     border-radius: 10px;
@@ -64,8 +86,54 @@ input::placeholder {
     margin: 35px;
 }
 
-img {
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
+/* modal box styling  */
+
+.modal-box {
+    display: flex;
+    background-color: rgb(28, 2, 65, 0.97);
+    padding: 60px;
+    border: 12px solid #680858e7;
+    border-radius: 10px;
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 70vh;
+    justify-content: space-between;
+}
+.modal-box img {
+    max-width: 60%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.modal-box h2 {
+    font-family: "Orbitron", sans-serif;
+}
+.modal-info {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+}
+.modal-info p {
+    margin-top: auto;
+}
+
+/* The Close Button */
+.close-tag {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-tag:hover,
+.close-tag:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
