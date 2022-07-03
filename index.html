@@ -6,26 +6,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/dd230845a1.js" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
-    <h1>My Imageboard</h1>
+    <h1>Xenogenesis</h1>
 
 
     <!-- This container is for our Vue instance -->
     <div id="main">
         <modal v-if="imageSelected" :selected-image="imageSelected" @close="closeModal"></modal>
         <form method="post" action="/upload" enctype="multipart/form-data" @submit="handleSubmit" class="input-form">
-            <input name="title" placeholder="Title"/>
-            <input name="user" placeholder="User"/>
-            <input name="description" placeholder="Description"/>
-            <input name="image" type="file" accept="image/*"/>
-            <button>Submit</button> 
+           
+            <div class="form-box">
+                <input name="title" placeholder="TITLE"/>
+                <input name="user" placeholder="USER"/>
+                <input name="description" placeholder="DESCRIPTION"/>
+                <label for="input-tag">
+                    <i class="fa-solid fa-camera"></i>
+                     Browse                   
+                    <input name="image" type="file" accept="image/*" id="input-tag"/>
+                </label>
+                <button>Submit</button> 
+            </div>
 
         </form>
 
-        <h2>Latest Images </h2>
+        <h2 class="image-news">Latest Images </h2>
 
         <div v-if="images.length" class="image-board">
             <div v-for="image in images" :key="image.id" class="picture-container">
@@ -43,7 +53,7 @@
 
 
     <footer>
-            &copy; Imageboard,
+            &copy; Xenogenesis,
             <script>document.write(new Date().getFullYear())</script>
     </footer>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>

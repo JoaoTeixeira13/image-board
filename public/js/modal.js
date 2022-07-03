@@ -32,7 +32,7 @@ const modal = {
                         <h3>{{image.description}}</h3>
                         <p>Uploaded by {{image.username}} on {{image.created_at}}</p>
                     </div>
-                    <span @click="close" class=close-tag>X</span>
+                    <span @click="close" class=close-tag><i class="fa-solid fa-circle-xmark"></i></span>
                     
                </div>`,
 };
