@@ -108,22 +108,22 @@ button {
 }
 
 button,
-label:hover,
-label:focus {
+label:hover {
     color: #dabdbd;
     background: linear-gradient(45deg, transparent 5%, #198991e7 5%);
 }
 label {
+    width: max-content;
     text-align: center;
+    font-weight: normal;
     height: 28px;
     display: inline-block;
-    padding: 12px;
+    padding: 12px 20px;
     color: #198991e7;
     background: linear-gradient(45deg, transparent 5%, #dabdbd 5%);
 }
 
-button:hover,
-button:focus {
+button:hover {
     background: linear-gradient(45deg, transparent 5%, #b2034a 5%);
 }
 

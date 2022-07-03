@@ -54,16 +54,20 @@ const uploader = multer({
 app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
     const url = "https://s3.amazonaws.com/spicedling/" + req.file.filename;
 
-    db.uploadImage(url, req.body.user, req.body.title, req.body.description)
-        .then((result) => {
-            res.json({
-                sucess: true,
-                payload: result.rows[0],
+    if (url && req.body.user && req.body.title) {
+        db.uploadImage(url, req.body.user, req.body.title, req.body.description)
+            .then((result) => {
+                res.json({
+                    sucess: true,
+                    payload: result.rows[0],
+                });
+            })
+            .catch((err) => {
+                console.log("error is ", err);
             });
-        })
-        .catch((err) => {
-            console.log("error is ", err);
-        });
+    } else {
+        console.log("insuficient information provided");
+    }
 
     //now its time to store the url, and all the other data in the database
     //return the values to the server
