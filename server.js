@@ -18,7 +18,6 @@ app.get("/images", (req, res) => {
     db.getImages()
         .then((result) => {
             const images = result.rows;
-            console.log("results are ", result.rows);
             res.json(images);
         })
         .catch((err) => {
@@ -27,10 +26,7 @@ app.get("/images", (req, res) => {
 });
 
 app.get("/getImages/:image", (req, res) => {
-    console.log("required parameters are", req.params);
-    console.log("current image id is ", req.params.image);
     db.getSpecificImage(req.params.image).then((result) => {
-        console.log("is this what I am after?", result.rows[0]);
         res.json(result.rows[0]);
     });
 });
@@ -56,22 +52,10 @@ const uploader = multer({
 });
 
 app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
-    console.log("In upload");
-    console.log("file", req.file);
-    console.log("req.body is ", req.body);
-    console.log("our image can be found at url?", "concacanate url here");
-    // if (!req.body.title) {
-    //     res.json({ error: "Missing field title!" });
-    //     return;
-    // }
-    // res.json({ success: true });
     const url = "https://s3.amazonaws.com/spicedling/" + req.file.filename;
 
-    console.log("url is ", url);
     db.uploadImage(url, req.body.user, req.body.title, req.body.description)
         .then((result) => {
-            console.log("result is ", result.rows[0]);
-
             res.json({
                 sucess: true,
                 payload: result.rows[0],

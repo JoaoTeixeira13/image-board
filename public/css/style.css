@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(290deg, #2e0249, #331834, #141233, #1c0241);
+    background: linear-gradient(290deg, #2e0249, #261027, #141233, #1c0241);
     background-size: 300% 300%;
     animation: universe 5s ease infinite;
     color: #ece6db;
@@ -80,7 +80,7 @@ input::placeholder {
 
 /* .modal-box img, */
 .picture-container {
-    border: 12px solid wheat;
+    border: 12px solid #f7c0eee7;
     border-radius: 10px;
     padding: 25px;
     margin: 35px;
@@ -90,9 +90,9 @@ input::placeholder {
 
 .modal-box {
     display: flex;
-    background-color: rgb(28, 2, 65, 0.97);
+    background-color: rgb(20, 5, 41, 0.97);
     padding: 60px;
-    border: 12px solid #680858e7;
+    border: 8px solid #f7c0eee7;
     border-radius: 10px;
     z-index: 2;
     position: fixed;
@@ -102,6 +102,20 @@ input::placeholder {
     width: 80vw;
     height: 70vh;
     justify-content: space-between;
+    -webkit-animation: pulsar 1s ease-in-out infinite alternate;
+    -moz-animation: pulsar 1s ease-in-out infinite alternate;
+    animation: pulsar 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes pulsar {
+    from {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0f, 0 0 20px #0ff,
+            0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
+    }
+    to {
+        box-shadow: 0 0 10px #fff, 0 0 15px #ff4da6, 0 0 20px #ff4da6,
+            0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6,
+            0 0 40px #ff4da6;
+    }
 }
 .modal-box img {
     max-width: 60%;
@@ -123,17 +137,18 @@ input::placeholder {
     margin-top: auto;
 }
 
-/* The Close Button */
+/* The Close Tag */
 .close-tag {
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
+    position: absolute;
+    right: 5%;
 }
 
 .close-tag:hover,
 .close-tag:focus {
-    color: black;
+    color: #ece6db;
     text-decoration: none;
     cursor: pointer;
 }
