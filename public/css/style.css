@@ -65,6 +65,10 @@ form,
 /* form elements */
 .form-box {
     margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70vw;
+    justify-content: space-between;
 }
 .input-form {
     margin: 50px;
@@ -110,8 +114,10 @@ label:focus {
     background: linear-gradient(45deg, transparent 5%, #198991e7 5%);
 }
 label {
-    margin-left: 50px;
-    padding: 13px;
+    text-align: center;
+    height: 28px;
+    display: inline-block;
+    padding: 12px;
     color: #198991e7;
     background: linear-gradient(45deg, transparent 5%, #dabdbd 5%);
 }

@@ -22,15 +22,20 @@
         <form method="post" action="/upload" enctype="multipart/form-data" @submit="handleSubmit" class="input-form">
            
             <div class="form-box">
-                <input name="title" placeholder="TITLE"/>
-                <input name="user" placeholder="USER"/>
-                <input name="description" placeholder="DESCRIPTION"/>
-                <label for="input-tag">
-                    <i class="fa-solid fa-camera"></i>
-                     Browse                   
-                    <input name="image" type="file" accept="image/*" id="input-tag"/>
-                </label>
-                <button>Submit</button> 
+                <div>
+                    <input name="title" placeholder="TITLE"/>
+                    <input name="user" placeholder="USER"/>
+                    <input name="description" placeholder="DESCRIPTION"/>
+
+                </div>
+                <div>
+                    <label for="input-tag">
+                        <i class="fa-solid fa-camera"></i>
+                         Browse                   
+                        <input name="image" type="file" accept="image/*" id="input-tag"/>
+                    </label>
+                    <button>Submit</button> 
+                </div>
             </div>
 
         </form>
