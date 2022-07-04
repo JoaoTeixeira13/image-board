@@ -22,6 +22,9 @@ Vue.createApp({
                 console.log("response from /images:", data);
 
                 this.images = data;
+            })
+            .catch((err) => {
+                console.log("error is ", err);
             });
     },
     components: {
@@ -39,7 +42,10 @@ Vue.createApp({
                 body: new FormData(e.target),
             })
                 .then((res) => res.json())
-                .then((data) => this.images.unshift(data.payload));
+                .then((data) => this.images.unshift(data.payload))
+                .catch((err) => {
+                    console.log("error is ", err);
+                });
         },
         selectImage(id) {
             console.log("Image id clicked on is,", id);
@@ -47,6 +53,25 @@ Vue.createApp({
         },
         closeModal() {
             this.imageSelected = null;
+        },
+        getMoreImages() {
+            console.log("button clicked");
+            //the image with the lowest id
+            console.log(
+                "image with the lowest id is",
+                this.images[this.images.length - 1].id
+            );
+            let lowestId = this.images[this.images.length - 1].id;
+            fetch(`/moreImages/${lowestId}`)
+                .then((resp) => resp.json())
+                .then((data) => {
+                    console.log("response from /moreImages:", data);
+
+                    this.images.push(...data.payload);
+                })
+                .catch((err) => {
+                    console.log("error is ", err);
+                });
         },
     },
 }).mount("#main");

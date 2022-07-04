@@ -74,6 +74,25 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
     //and have the server send the newly add image data back to the clientside
 });
 
+//get more images
+
+app.get("/moreImages/:id", (req, res) => {
+    console.log("more images route activated");
+    console.log("required parameters are ", req.params.id);
+    db.fetchMoreImages(req.params.id)
+        .then((result) => {
+            res.json({
+                sucess: true,
+                payload: result.rows,
+            });
+        })
+        .catch((err) => {
+            console.log("error is ", err);
+        });
+});
+
+// handling comments
+
 app.get("/comments/:imageId", (req, res) => {
     db.getImageComments(req.params.imageId)
         .then((result) => {
@@ -88,7 +107,6 @@ app.post("/comment", (req, res) => {
     if (req.body.comment && req.body.username) {
         db.uploadComment(req.body.comment, req.body.username, req.body.image_id)
             .then((result) => {
-                
                 res.json({
                     sucess: true,
                     payload: result.rows[0],
