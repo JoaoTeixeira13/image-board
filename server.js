@@ -74,6 +74,32 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
     //and have the server send the newly add image data back to the clientside
 });
 
+app.get("/comments/:imageId", (req, res) => {
+    db.getImageComments(req.params.imageId)
+        .then((result) => {
+            res.json(result.rows);
+        })
+        .catch((err) => {
+            console.log("error is ", err);
+        });
+});
+
+app.post("/comment", (req, res) => {
+    if (req.body.comment && req.body.username) {
+        db.uploadComment(req.body.comment, req.body.username, req.body.image_id)
+            .then((result) => {
+                
+                res.json({
+                    sucess: true,
+                    payload: result.rows[0],
+                });
+            })
+            .catch((err) => {
+                console.log("error is ", err);
+            });
+    }
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });

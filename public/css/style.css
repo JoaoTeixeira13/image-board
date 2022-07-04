@@ -26,7 +26,7 @@ h1 {
     -moz-animation: textPulsar 1.2s ease-in-out infinite alternate;
     animation: textPulsar 1.2s ease-in-out infinite alternate;
 }
-@-webkit-keyframes textPulsar {
+@keyframes textPulsar {
     from {
         text-shadow: 0 0 2px #fff, 0 0 6px #f0f, 0 0 10px #0ff, 0 0 12px #e60073;
     }
@@ -169,7 +169,7 @@ button:hover {
     -moz-animation: pulsar 1s ease-in-out infinite alternate;
     animation: pulsar 1s ease-in-out infinite alternate;
 }
-@-webkit-keyframes pulsar {
+@keyframes pulsar {
     from {
         box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0f, 0 0 20px #0ff,
             0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
@@ -196,7 +196,7 @@ button:hover {
     display: flex;
     flex-direction: column;
 }
-.modal-info p {
+.comment-template {
     margin-top: auto;
 }
 

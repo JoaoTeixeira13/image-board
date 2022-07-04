@@ -30,3 +30,21 @@ module.exports.uploadImage = (url, username, title, description) => {
     const param = [url, username, title, description];
     return db.query(q, param);
 };
+
+module.exports.getImageComments = (imageId) => {
+    return db.query(
+        `SELECT comments.comment, comments.username, comments.created_at
+        FROM comments
+        WHERE comments.image_id = $1`,
+        [imageId]
+    );
+};
+
+module.exports.uploadComment = (comment, username, image_id) => {
+    const q = `INSERT INTO comments(comment, username, image_id)
+     VALUES ($1, $2, $3)
+     RETURNING *
+    `;
+    const param = [comment, username, image_id];
+    return db.query(q, param);
+};

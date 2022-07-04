@@ -1,14 +1,15 @@
+import comments from "./comments.js";
+
 const modal = {
     data() {
         return {
             heading: "modal component",
-            count: 1,
-            greetee: "",
             image: {},
         };
     },
     props: ["selectedImage"],
     mounted() {
+        // console.log("image object is", this.image, this.selectedImage);
         console.log("first component mounted");
 
         fetch(`/getImages/${this.selectedImage}`)
@@ -19,6 +20,9 @@ const modal = {
             .catch((err) => {
                 console.log("error is ", err);
             });
+    },
+    components: {
+        comments: comments,
     },
     methods: {
         close() {
@@ -31,6 +35,7 @@ const modal = {
                         <h2>{{image.title}}</h2>
                         <h3>{{image.description}}</h3>
                         <p>Uploaded by {{image.username}} on {{image.created_at}}</p>
+                        <comments :selected-image="selectedImage"></comments>
                     </div>
                     <span @click="close" class=close-tag><i class="fa-solid fa-circle-xmark"></i></span>
                     
