@@ -14,7 +14,6 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 app.get("/images", (req, res) => {
-    console.log("/images route has been hit");
     db.getImages()
         .then((result) => {
             const images = result.rows;
@@ -77,8 +76,6 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
 //get more images
 
 app.get("/moreImages/:id", (req, res) => {
-    console.log("more images route activated");
-    console.log("required parameters are ", req.params.id);
     db.fetchMoreImages(req.params.id)
         .then((result) => {
             res.json({

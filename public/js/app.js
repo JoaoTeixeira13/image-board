@@ -9,6 +9,7 @@ Vue.createApp({
             name: "Images",
             images: [],
             imageSelected: "",
+            moreButton: true,
         };
     }, //data ends here
 
@@ -19,8 +20,6 @@ Vue.createApp({
         fetch("/images")
             .then((resp) => resp.json())
             .then((data) => {
-                console.log("response from /images:", data);
-
                 this.images = data;
             })
             .catch((err) => {
@@ -55,19 +54,24 @@ Vue.createApp({
             this.imageSelected = null;
         },
         getMoreImages() {
-            console.log("button clicked");
-            //the image with the lowest id
-            console.log(
-                "image with the lowest id is",
-                this.images[this.images.length - 1].id
-            );
-            let lowestId = this.images[this.images.length - 1].id;
-            fetch(`/moreImages/${lowestId}`)
+            let lowerId = this.images[this.images.length - 1].id;
+
+            fetch(`/moreImages/${lowerId}`)
                 .then((resp) => resp.json())
                 .then((data) => {
-                    console.log("response from /moreImages:", data);
-
                     this.images.push(...data.payload);
+
+                    //turn off the more button
+                    const lowestImg = this.images[this.images.length - 1];
+
+                    console.log(
+                        "comparing lowest two values",
+                        lowestImg.id === lowestImg.lowestId
+                    );
+
+                    if (lowestImg.id === lowestImg.lowestId) {
+                        this.moreButton = false;
+                    }
                 })
                 .catch((err) => {
                     console.log("error is ", err);
