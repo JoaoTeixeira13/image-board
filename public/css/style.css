@@ -148,6 +148,9 @@ button:hover {
 .picture-container:hover {
     border: 12px solid #e49797;
 }
+.more-button {
+    margin: 50px;
+}
 
 /* modal box styling  */
 
@@ -196,6 +199,9 @@ button:hover {
     display: flex;
     flex-direction: column;
 }
+.modal-info h3 {
+    margin: 0;
+}
 .comment-template {
     margin-top: auto;
 }
@@ -214,4 +220,41 @@ button:hover {
     color: #ece6db;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* comment section */
+
+.comment-box {
+    border: solid 1px #ece6db;
+    margin: 5px 0;
+    padding: 10px;
+}
+
+.comment-form button {
+    height: 35px;
+    margin: 20px 0 20px 0;
+}
+.comment-form input {
+    height: 35px;
+    width: 45%;
+    display: inline-block;
+    font-size: 18px;
+}
+.comment-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+}
+.comment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.comment-group {
+    overflow-y: scroll;
+    height: 350px;
+    margin: 30px 0;
 }
