@@ -41,7 +41,14 @@ Vue.createApp({
                 body: new FormData(e.target),
             })
                 .then((res) => res.json())
-                .then((data) => this.images.unshift(data.payload))
+                .then((data) => {
+                    this.images.unshift(data.payload);
+                    //reset input fields after upload
+                    this.$refs.title.value = null;
+                    this.$refs.user.value = null;
+                    this.$refs.description.value = null;
+                    this.$refs.image.value = null;
+                })
                 .catch((err) => {
                     console.log("error is ", err);
                 });

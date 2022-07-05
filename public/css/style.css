@@ -228,10 +228,11 @@ button:hover {
     border: solid 1px #ece6db;
     margin: 5px 0;
     padding: 10px;
+    border-radius: 3px;
 }
 
 .comment-form button {
-    height: 35px;
+    height: 40px;
     margin: 20px 0 20px 0;
 }
 .comment-form input {
@@ -239,6 +240,9 @@ button:hover {
     width: 45%;
     display: inline-block;
     font-size: 18px;
+    background-color: #dabdbd;
+    border: none;
+    border-radius: 2px;
 }
 .comment-inputs {
     display: flex;

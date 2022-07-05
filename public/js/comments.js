@@ -36,6 +36,8 @@ const comments = {
                 .then((res) => res.json())
                 .then((data) => {
                     this.comments.push(data.payload);
+                    this.comment = "";
+                    this.username = "";
                 })
                 .catch((err) => {
                     console.log("error is ", err);
