@@ -17,11 +17,7 @@ Vue.createApp({
         console.log("my vue app has mounted!");
         //this is the location for us to ask if there are any images to retrieve in our database!
 
-        if (
-            !isNaN(location.pathname.slice(1))
-            //  &&
-            // location.pathname.slice(1) <= this.images.length
-        ) {
+        if (!isNaN(location.pathname.slice(1))) {
             this.imageSelected = location.pathname.slice(1);
         } else {
             this.imageSelected = null;
@@ -45,7 +41,6 @@ Vue.createApp({
         //this is where we define all of our functions
         handleSubmit(e) {
             e.preventDefault();
-            console.log("Handle Submit");
 
             fetch("/upload", {
                 method: "POST",
@@ -65,7 +60,6 @@ Vue.createApp({
                 });
         },
         selectImage(id) {
-            console.log("Image id clicked on is,", id);
             this.imageSelected = id;
             history.pushState({}, "", "/" + id);
         },
@@ -83,11 +77,6 @@ Vue.createApp({
 
                     //turn off the more button
                     const lowestImg = this.images[this.images.length - 1];
-
-                    console.log(
-                        "comparing lowest two values",
-                        lowestImg.id === lowestImg.lowestId
-                    );
 
                     if (lowestImg.id === lowestImg.lowestId) {
                         this.moreButton = false;
