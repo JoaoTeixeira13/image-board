@@ -28,7 +28,6 @@ Vue.createApp({
             history.replaceState({}, "", "/");
         }
 
-
         fetch("/images")
             .then((resp) => resp.json())
             .then((data) => {
@@ -114,7 +113,19 @@ Vue.createApp({
                 });
         },
         notificationPop() {
-            location.reload();
+            fetch("/images")
+                .then((resp) => resp.json())
+                .then((data) => {
+                    //finds the new images since last fetch and uploads them to the existing array of images
+
+                    let highestId = this.images[0].id;
+                    const newImages = data.filter((x) => x.id > highestId);
+                    this.images.unshift(...newImages);
+                    this.notification = false;
+                })
+                .catch((err) => {
+                    console.log("error is ", err);
+                });
         },
     },
 }).mount("#main");
