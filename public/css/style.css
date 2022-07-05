@@ -260,3 +260,6 @@ button:hover {
     height: 200px;
     margin: 30px 0;
 }
+.notification {
+    cursor: pointer;
+}

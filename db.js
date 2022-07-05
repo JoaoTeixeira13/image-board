@@ -65,6 +65,4 @@ module.exports.fetchMoreImages = (smallestId) => {
     );
 };
 
-module.exports.countImages = () => {
-    return db.query(`SELECT COUNT (*) FROM images`);
-};
+

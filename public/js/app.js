@@ -10,6 +10,7 @@ Vue.createApp({
             images: [],
             imageSelected: "",
             moreButton: true,
+            notification: false,
         };
     }, //data ends here
 
@@ -27,6 +28,7 @@ Vue.createApp({
             history.replaceState({}, "", "/");
         }
 
+
         fetch("/images")
             .then((resp) => resp.json())
             .then((data) => {
@@ -35,6 +37,28 @@ Vue.createApp({
             .catch((err) => {
                 console.log("error is ", err);
             });
+
+        //use the fetched data to recursevely compare if there is a new image on the data base
+
+        const checkNewImages = () => {
+            setTimeout(() => {
+                fetch("/images")
+                    .then((res) => res.json())
+                    .then((result) => {
+                        let highestId = this.images[0].id;
+
+                        if (highestId !== result[0].id) {
+                            this.notification = true;
+                        }
+                    })
+                    .catch((err) => {
+                        console.log("error is ", err);
+                    });
+
+                return checkNewImages();
+            }, 5000);
+        };
+        checkNewImages();
     },
     components: {
         modal: modal,
@@ -88,6 +112,9 @@ Vue.createApp({
                 .catch((err) => {
                     console.log("error is ", err);
                 });
+        },
+        notificationPop() {
+            location.reload();
         },
     },
 }).mount("#main");

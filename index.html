@@ -41,6 +41,7 @@
         </form>
 
         <h2 class="image-news">Latest Images </h2>
+        <h2 v-if="notification" @click="notificationPop" class="notification">New Image Available</h2>
 
         <div v-if="images.length" class="image-board">
             <div v-for="image in images" :key="image.id" class="picture-container">
