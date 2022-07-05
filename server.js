@@ -25,9 +25,13 @@ app.get("/images", (req, res) => {
 });
 
 app.get("/getImages/:image", (req, res) => {
-    db.getSpecificImage(req.params.image).then((result) => {
-        res.json(result.rows[0]);
-    });
+    db.getSpecificImage(req.params.image)
+        .then((result) => {
+            res.json({ payload: result.rows[0] });
+        })
+        .catch((err) => {
+            console.log("error is ", err);
+        });
 });
 
 const storage = multer.diskStorage({

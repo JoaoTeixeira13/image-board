@@ -17,6 +17,17 @@ Vue.createApp({
         console.log("my vue app has mounted!");
         //this is the location for us to ask if there are any images to retrieve in our database!
 
+        if (
+            !isNaN(location.pathname.slice(1))
+            //  &&
+            // location.pathname.slice(1) <= this.images.length
+        ) {
+            this.imageSelected = location.pathname.slice(1);
+        } else {
+            this.imageSelected = null;
+            history.replaceState({}, "", "/");
+        }
+
         fetch("/images")
             .then((resp) => resp.json())
             .then((data) => {
@@ -56,9 +67,11 @@ Vue.createApp({
         selectImage(id) {
             console.log("Image id clicked on is,", id);
             this.imageSelected = id;
+            history.pushState({}, "", "/" + id);
         },
         closeModal() {
             this.imageSelected = null;
+            history.pushState({}, "", "/");
         },
         getMoreImages() {
             let lowerId = this.images[this.images.length - 1].id;

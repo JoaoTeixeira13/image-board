@@ -64,3 +64,7 @@ module.exports.fetchMoreImages = (smallestId) => {
         [smallestId]
     );
 };
+
+module.exports.countImages = () => {
+    return db.query(`SELECT COUNT (*) FROM images`);
+};

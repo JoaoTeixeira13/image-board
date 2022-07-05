@@ -15,7 +15,11 @@ const modal = {
         fetch(`/getImages/${this.selectedImage}`)
             .then((res) => res.json())
             .then((data) => {
-                this.image = data;
+                if (data.payload) {
+                    this.image = data.payload;
+                } else {
+                    this.$emit("close");
+                }
             })
             .catch((err) => {
                 console.log("error is ", err);
