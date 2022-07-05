@@ -19,6 +19,9 @@ Vue.createApp({
 
         if (!isNaN(location.pathname.slice(1))) {
             this.imageSelected = location.pathname.slice(1);
+            window.addEventListener("popstate", () => {
+                this.imageSelected = location.pathname.slice(1);
+            });
         } else {
             this.imageSelected = null;
             history.replaceState({}, "", "/");
