@@ -37,7 +37,7 @@ Instagram-inspired, single-page application website leveraging Vue.js where anyo
 
 <br>
 <br>
-<img src="public/upload2.gif">
+<img src="public/uploading2.gif">
 
 <br>
 <br>
