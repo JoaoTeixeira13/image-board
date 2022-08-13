@@ -9,7 +9,6 @@ const comments = {
     },
     props: ["selectedImage"],
     mounted() {
-        console.log("comments component mounted");
 
         fetch(`/comments/${this.selectedImage}`)
             .then((res) => res.json())

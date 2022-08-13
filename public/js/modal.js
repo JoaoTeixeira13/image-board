@@ -9,8 +9,6 @@ const modal = {
     },
     props: ["selectedImage"],
     mounted() {
-        // console.log("image object is", this.image, this.selectedImage);
-        console.log("first component mounted");
 
         fetch(`/getImages/${this.selectedImage}`)
             .then((res) => res.json())

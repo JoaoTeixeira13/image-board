@@ -15,7 +15,6 @@ Vue.createApp({
     }, //data ends here
 
     mounted() {
-        console.log("my vue app has mounted!");
         //this is the location for us to ask if there are any images to retrieve in our database!
 
         if (!isNaN(location.pathname.slice(1))) {

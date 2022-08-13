@@ -72,9 +72,6 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
         console.log("insuficient information provided");
     }
 
-    //now its time to store the url, and all the other data in the database
-    //return the values to the server
-    //and have the server send the newly add image data back to the clientside
 });
 
 //get more images
